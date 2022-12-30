@@ -1,5 +1,3 @@
-import java.security.KeyPair;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
@@ -13,7 +11,7 @@ public final class TopologicalSorter {
 
     private static void DFS(String path) {
         color.replace(path, 1);
-        for (String file: filesDict.get(path).getDependencies()) {
+        for (String file : filesDict.get(path).getDependencies()) {
             if (color.get(file) == 0) {
                 parent.replace(file, path);
                 DFS(file);
@@ -42,7 +40,7 @@ public final class TopologicalSorter {
         filesDict = new HashMap<>();
         color = new HashMap<>();
         parent = new HashMap<>();
-        for (FileData file: graph.getFiles()) {
+        for (FileData file : graph.getFiles()) {
             color.put(file.getPath(), 0);
             filesDict.put(file.getPath(), file);
             parent.put(file.getPath(), "");
@@ -52,7 +50,7 @@ public final class TopologicalSorter {
 
     public static List<FileData> sort(DependencyGraph graph) {
         prepareData(graph);
-        for (FileData file: graph.getFiles()) {
+        for (FileData file : graph.getFiles()) {
             if (color.get(file.getPath()) == 0) {
                 DFS(file.getPath());
             }
@@ -62,7 +60,7 @@ public final class TopologicalSorter {
 
     public static List<FileData> getLoops(DependencyGraph graph) {
         prepareData(graph);
-        for (FileData file: graph.getFiles()) {
+        for (FileData file : graph.getFiles()) {
             if (color.get(file.getPath()) == 0) {
                 DFS(file.getPath());
             }

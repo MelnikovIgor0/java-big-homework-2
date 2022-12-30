@@ -17,16 +17,16 @@ public final class FileData {
     }
 
     public FileData(String filePath, List<String> fileDependencies) throws IllegalArgumentException {
-        if (!isValidFile(filePath)) {
+        if (isFIleInvalid(filePath)) {
             throw new IllegalArgumentException("File path is not valid!");
         }
         path = filePath;
         dependencies = new ArrayList<>(fileDependencies);
     }
 
-    public static boolean isValidFile(String path) {
+    public static boolean isFIleInvalid(String path) {
         File file = new File(path);
-        return file.exists() && !file.isDirectory();
+        return (!file.exists() || file.isDirectory());
     }
 
     public void printFile() {
@@ -35,7 +35,7 @@ public final class FileData {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-        } catch (Throwable exc) {
+        } catch (Throwable ignored) {
         }
     }
 
@@ -52,7 +52,6 @@ public final class FileData {
         if (!(o instanceof FileData)) {
             return false;
         }
-        FileData file = (FileData)o;
-        return path.equals(file.path);
+        return path.equals(((FileData)o).path);
     }
 }
