@@ -1,6 +1,14 @@
 import java.util.List;
 import java.util.Scanner;
+
+/**
+ * The main class of program, which combines all the functionality.
+ */
 public class Main {
+    /**
+     * The main method of program, which combines all the functionality.
+     * @param args Arguments of program.
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         String path = scanner.nextLine();

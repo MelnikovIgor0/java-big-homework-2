@@ -5,10 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class implements functionality for building a graph of dependencies
+ * of files, and provides access to a list of files in the specified directory.
+ */
 public final class DependencyGraph {
     private final String rootPath;
     private final List<FileData> files;
 
+    /**
+     * Public constructor of dependency graph.
+     * @param root Root directory for finding files.
+     * @throws Throwable Exception.
+     */
     public DependencyGraph(String root) throws Throwable {
         rootPath = root;
         files = new ArrayList<>();
@@ -53,6 +62,10 @@ public final class DependencyGraph {
         }
     }
 
+    /**
+     * Method for getting list of files in specified in constructor directory.
+     * @return List of files (in FileData format) placed in specified directory.
+     */
     public List<FileData> getFiles() {
         return files;
     }

@@ -2,6 +2,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * This class implements functionality for finding topological order of files in
+ * dependency graphs and finding loops in dependency graphs. You can create
+ * instance of this class, but you should not do it because this class does not
+ * implement any instance methods.
+ */
 public final class TopologicalSorter {
     private static HashMap<String, FileData> filesDict;
     private static HashMap<String, Integer> color;
@@ -9,12 +15,12 @@ public final class TopologicalSorter {
     private static HashMap<String, String> parent;
     private static String loop = "";
 
-    private static void DFS(String path) {
+    private static void dFS(String path) {
         color.replace(path, 1);
         for (String file : filesDict.get(path).getDependencies()) {
             if (color.get(file) == 0) {
                 parent.replace(file, path);
-                DFS(file);
+                dFS(file);
             } else if (color.get(file) == 1) {
                 loop = file;
                 parent.replace(file, path);
@@ -48,21 +54,32 @@ public final class TopologicalSorter {
         loop = "";
     }
 
+    /**
+     * This method implements algorithm of topological sorting and returns the order of files.
+     * @param graph dependency graph which should be topologically sorted.
+     * @return List of files which placed in topological order.
+     */
     public static List<FileData> sort(DependencyGraph graph) {
         prepareData(graph);
         for (FileData file : graph.getFiles()) {
             if (color.get(file.getPath()) == 0) {
-                DFS(file.getPath());
+                dFS(file.getPath());
             }
         }
         return order;
     }
 
+    /**
+     * This method implements algorithm of topological sorting
+     * and returns List of files which form a loop.
+     * @param graph Dependency graph which should be topologically sorted.
+     * @return List of files which form a loop.
+     */
     public static List<FileData> getLoops(DependencyGraph graph) {
         prepareData(graph);
         for (FileData file : graph.getFiles()) {
             if (color.get(file.getPath()) == 0) {
-                DFS(file.getPath());
+                dFS(file.getPath());
             }
             if (!loop.equals("")) {
                 return getLoop(loop);
