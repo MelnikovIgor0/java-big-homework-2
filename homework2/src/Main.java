@@ -16,7 +16,8 @@ public class Main {
             DependencyGraph graph = new DependencyGraph(path);
             List<FileData> loops = TopologicalSorter.getLoops(graph);
             if (loops.size() > 0) {
-                System.out.println("It's impossible to sort files topologically. There's dependency loop in files:");
+                System.out.println("It's impossible to sort files " +
+                        "topologically. There's dependency loop in files:");
                 for (FileData file : loops) {
                     System.out.println(file.getPath());
                 }
@@ -28,7 +29,8 @@ public class Main {
                 }
             }
         } catch (WrongRequireException exception) {
-            System.out.println("Problem in require: " + exception.getMessage());
+            System.out.println("Problem in require: " +
+                    exception.getMessage());
         } catch (Throwable exception) {
             System.out.println(exception.getMessage());
         }

@@ -3,8 +3,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * This class implements functionality for finding topological order of files in
- * dependency graphs and finding loops in dependency graphs. You can create
+ * This class implements functionality for finding topological order of files
+ * in dependency graphs and finding loops in dependency graphs. You can create
  * instance of this class, but you should not do it because this class does not
  * implement any instance methods.
  */
@@ -55,7 +55,8 @@ public final class TopologicalSorter {
     }
 
     /**
-     * This method implements algorithm of topological sorting and returns the order of files.
+     * This method implements algorithm of topological
+     * sorting and returns the order of files.
      * @param graph dependency graph which should be topologically sorted.
      * @return List of files which placed in topological order.
      */

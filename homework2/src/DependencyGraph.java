@@ -64,7 +64,7 @@ public final class DependencyGraph {
 
     /**
      * Method for getting list of files in specified in constructor directory.
-     * @return List of files (in FileData format) placed in specified directory.
+     * @return List of files (as FileData) placed in specified directory.
      */
     public List<FileData> getFiles() {
         return files;

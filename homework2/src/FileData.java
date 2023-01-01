@@ -21,7 +21,8 @@ public final class FileData {
     }
 
     /**
-     * This method returns list of names of files from which this file is dependent.
+     * This method returns list of names of files
+     * from which this file is dependent.
      * @return List of dependencies.
      */
     public List<String> getDependencies() {
@@ -31,10 +32,12 @@ public final class FileData {
     /**
      * This is public constructor of class.
      * @param filePath Path to file.
-     * @param fileDependencies List of paths of files from which this file is dependent.
+     * @param fileDependencies List of paths of files
+     *                         from which this file is dependent.
      * @throws IllegalArgumentException Exception
      */
-    public FileData(String filePath, List<String> fileDependencies) throws IllegalArgumentException {
+    public FileData(String filePath, List<String> fileDependencies)
+            throws IllegalArgumentException {
         if (isFIleInvalid(filePath)) {
             throw new IllegalArgumentException("File path is not valid!");
         }
